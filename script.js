@@ -4,7 +4,7 @@ let mailField = document.getElementById("mail")
 let titleField = document.getElementById("title")
 let sizeField = document.getElementById("size")
 let designField = document.getElementById("design")
-let colorField = document.getElementById("color")
+let colorField = document.querySelectorAll("color option")
 let activitiesField = document.querySelector(".activities")
 
 ///Upon loading focus on the first input field so user can start typing
@@ -28,7 +28,7 @@ function isValidUsername(username){
     return /^[a-z]+$/.test(username);
 }
 
-nameField.addEventListener("input", createListener(isValidUsername))
+nameField.addEventListener("focus", createListener(isValidUsername))
 
 
 ///Validator for the email field
@@ -36,36 +36,39 @@ function isValidEmail(email){
     return /^[^@]+@[^@.]+\.[a-z]{3}$/i.test(email);
 }
 
-mailField.addEventListener("input", createListener(isValidEmail))
+mailField.addEventListener("focus", createListener(isValidEmail))
 
 
 ///Add feature to other in job roles so a new input field is displayed when other is selected
-role = document.createElement('input')
-role.name ==="other-title"
-role.placeholder === "Your Job Role"
-role.hidden = true
-titleField.appendChild(role)
 
+document.getElementById("job_role_other").hidden = true
 titleField.addEventListener("change", (e)=>{
-    if(role.value === 'other'){
-        $("#other-title").isShown()
+    if(document.getElementsByName("user_title").textContent = 'other'){
+        document.getElementById("job_role_other").hidden = false
     }
 })
 
 ///By default have all colors hidden
-const HideColors= ()=>{for(i=0;i<colorField.clientHeight;i++){
-    colorField[i].isHidden()
-}}
+const HideColors = ()=>{
+    $("cornflowerblue").hidden = true
+    $("darkslategrey").hidden = true
+    $("gold").hidden = true
+    $("tomato").hidden = true
+    $("steelblue").hidden = true
+    $("dimgrey").hidden = true
+}
 HideColors()
+
+///Change available colors based on design chosen, if none revert back to none shown
 designField.addEventListener("change", (e)=>{
     if(e.target.parentElement.textContent === 'js puns'){
-        $("cornflowerblue").isShown()
-        $("darkslategrey").isShown()
-        $("gold").isShown()
+        $("cornflowerblue").hidden = false
+        $("darkslategrey").hidden = false
+        $("gold").hidden = false
     }if(e.target.parentElement.textContent === 'heart js'){
-        $("tomato").isShown()
-        $("steelblue").isShown()
-        $("dimgrey").isShown()
+        $("tomato").hidden = false
+        $("steelblue").hidden = false
+        $("dimgrey").hidden = false
     }else{
         HideColors()
     }

@@ -52,11 +52,22 @@ titleField.addEventListener("change", (e)=>{
     }
 })
 
-
-
+///By default have all colors hidden
+const HideColors= ()=>{for(i=0;i<colorField.clientHeight;i++){
+    colorField[i].isHidden()
+}}
+HideColors()
 designField.addEventListener("change", (e)=>{
-    if(e.target.parentElement.textContent === 'other'){
-        role.style = 'block'
+    if(e.target.parentElement.textContent === 'js puns'){
+        $("cornflowerblue").isShown()
+        $("darkslategrey").isShown()
+        $("gold").isShown()
+    }if(e.target.parentElement.textContent === 'heart js'){
+        $("tomato").isShown()
+        $("steelblue").isShown()
+        $("dimgrey").isShown()
+    }else{
+        HideColors()
     }
 })
 

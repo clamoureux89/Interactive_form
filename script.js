@@ -4,7 +4,7 @@ let mailField = document.getElementById("mail")
 let titleField = document.getElementById("title")
 let sizeField = document.getElementById("size")
 let designField = document.getElementById("design")
-let colorField = document.querySelectorAll("color option")
+let colorField = document.getElementById("color")
 let activitiesField = document.querySelector(".activities")
 
 ///Upon loading focus on the first input field so user can start typing
@@ -12,12 +12,10 @@ nameField.focus()
 
 ///Create a general validator function which needs only a target and a base regex
 function createListener(validator){
-    return e=>{
-        const text=e.target.value;
-        const valid = validator(text);
-        if (valid) {
-            body.style.backgroundColor = "rgb(176, 208, 168)";
-          } else {
+    return e =>{
+        const text= e.target.textContent;
+        let valid = validator(text);
+        if (valid = false) {
             body.style.backgroundColor = "rgb(189, 86, 86)";
           }
         }
@@ -28,7 +26,7 @@ function isValidUsername(username){
     return /^[a-z]+$/.test(username);
 }
 
-nameField.addEventListener("focus", createListener(isValidUsername))
+nameField.addEventListener("focusout", createListener(isValidUsername))
 
 
 ///Validator for the email field
@@ -36,7 +34,7 @@ function isValidEmail(email){
     return /^[^@]+@[^@.]+\.[a-z]{3}$/i.test(email);
 }
 
-mailField.addEventListener("focus", createListener(isValidEmail))
+mailField.addEventListener("focusout", createListener(isValidEmail))
 
 
 ///Add feature to other in job roles so a new input field is displayed when other is selected
@@ -49,26 +47,39 @@ titleField.addEventListener("change", (e)=>{
 })
 
 ///By default have all colors hidden
-const HideColors = ()=>{
-    $("cornflowerblue").hidden = true
-    $("darkslategrey").hidden = true
-    $("gold").hidden = true
-    $("tomato").hidden = true
-    $("steelblue").hidden = true
-    $("dimgrey").hidden = true
+colorField.hidden = true
+let cornflower = colorField.firstChild
+let darkslategrey =cornflower.nextSibling
+let gold = darkslategrey.nextSibling
+let tomato =gold.nextSibling
+let steelblue =tomato.nextSibling
+let dimgrey = steelblue.nextSibling
+
+const HideColors = () => {
+    colorField.hidden = true
+    cornflower.hidden=true
+    darkslategrey.hidden=true
+    gold.hidden = true
+    tomato.hidden = true
+    steelblue.hidden = true
+    dimgrey.hidden = true
 }
+
 HideColors()
+
 
 ///Change available colors based on design chosen, if none revert back to none shown
 designField.addEventListener("change", (e)=>{
-    if(e.target.parentElement.textContent === 'js puns'){
-        $("cornflowerblue").hidden = false
-        $("darkslategrey").hidden = false
-        $("gold").hidden = false
-    }if(e.target.parentElement.textContent === 'heart js'){
-        $("tomato").hidden = false
-        $("steelblue").hidden = false
-        $("dimgrey").hidden = false
+    if(e.target.textContent = 'js puns'){
+        colorField.hidden = false
+        cornflower.hidden = false
+        darkslategrey.hidden = false
+        gold.hidden = false
+    }if(e.target.textContent = 'heart js'){
+        colorField.hidden = false
+        tomato.hidden = false
+        steelblue.hidden = false
+        dimgrey.hidden= false
     }else{
         HideColors()
     }

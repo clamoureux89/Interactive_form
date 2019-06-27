@@ -69,13 +69,13 @@ HideColors()
 
 
 ///Change available colors based on design chosen, if none revert back to none shown
-designField.addEventListener("change", (e)=>{
-    if(e.target.textContent = 'js puns'){
+designField.addEventListener("change", ()=>{
+    if(designField.textContent = 'js puns'){
         colorField.hidden = false
         cornflower.hidden = false
         darkslategrey.hidden = false
         gold.hidden = false
-    }if(e.target.textContent = 'heart js'){
+    }if(designField.textContent = 'heart js'){
         colorField.hidden = false
         tomato.hidden = false
         steelblue.hidden = false

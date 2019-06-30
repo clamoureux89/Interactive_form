@@ -84,17 +84,17 @@ $("#design").change(function() {
         colorField.show()
         console.log("colorField shown")
         $("option[value='cornflower']").hide()
-        console.log("cornflower shown")
+        console.log("cornflower hidden")
         $("option[value='darkslategrey'").hide()
-        console.log("darkslategrey shown")
+        console.log("darkslategrey hidden")
         $("option[value='gold'").hide()
-        console.log("gold shown")
+        console.log("gold hidden")
         $("option[value='tomato'").show()
-        console.log("tomato hidden")
+        console.log("tomato shown")
         $("option[value='steelblue'").show()
-        console.log("steelblue hidden")
+        console.log("steelblue shown")
         $("option[value='dimgrey'").show()
-        console.log("dimgrey hidden")
+        console.log("dimgrey shown")
         console.log(designField.value + "selected")
     }else{
         colorField.hide()
@@ -133,24 +133,24 @@ selectpaypal.hide()
 selectbitcoin.hide()
 
 
-$('select #payment').change(function(){
+$('#payment').change(function(){
 
-    if($(this).children('option:selected').val() === "Credit Card"){
-        creditcard.show()
+    if(payfield.val() === "credit card"){
+        selectcredit.show()
         selectpaypal.hide()
-        bitcoin.hide()
+        selectbitcoin.hide()
         console.log("Show credit card")
     }
-    if($(this).children('option:selected').val() === "Paypal"){
+    if(payfield.val() === "paypal"){
         selectcredit.hide()
-        paypal.show()
-        bitcoin.hide()
+        selectpaypal.show()
+        selectbitcoin.hide()
         console.log("Show paypal")
     }
-    if($(this).children('option:selected').val() === "Bitcoin"){
+    if(payfield.val() === "bitcoin"){
         selectcredit.hide()
         selectpaypal.hide()
-        bitcoin.show()
+        selectbitcoin.show()
         console.log("Show bitcoin")
     }
 }) 

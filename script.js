@@ -110,12 +110,13 @@ activitiesField.addEventListener('change',(e)=>{
     let selectedcost = e.target.parentElement.textContent
     if (e.target.checked){
         index = selectedcost.indexOf(('$')+1)
-        cost += parseInt(selectedcost.slice(index))
+        cost += parseInt(selectedcost.slice(index,))
+        console.log(parseInt(selectedcost.slice(index,)))
     }
     else{
         index = selectedcost.indexOf(('$')+1)
-        
         cost += parseInt(selectedcost.slice(index))
+        console.log("-" + console.log(parseInt(selectedcost.slice(index,))))
     }
 })
 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"

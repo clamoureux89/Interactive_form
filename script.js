@@ -4,7 +4,7 @@ let mailField = document.getElementById("mail")
 let titleField = document.getElementById("title")
 let sizeField = document.getElementById("size")
 let designField = document.getElementById("design")
-let colorField = document.getElementById("color")
+let colorField = $("#color")
 let activitiesField = document.querySelector(".activities")
 let zip = document.getElementById("zip")
 let cvv = document.getElementById("cvv")
@@ -54,44 +54,52 @@ titleField.addEventListener("change", (e)=>{
 })
 
 ///By default have all colors hidden
-colorField.hidden = true
-let cornflower = colorField.firstChild
-let darkslategrey =cornflower.nextSibling
-let gold = darkslategrey.nextSibling
-let tomato =gold.nextSibling
-let steelblue =tomato.nextSibling
-let dimgrey = steelblue.nextSibling
 
 
-colorField.hidden = true
-cornflower.hidden=true
-darkslategrey.hidden=true
-gold.hidden = true
-tomato.hidden = true
-steelblue.hidden = true
-dimgrey.hidden = true
+
+
+colorField.hide()
+
 
 
 ///Change available colors based on design chosen, if none revert back to none shown
-designField.addEventListener("select", ()=>{
-    if(designField.value = 'js puns'){
-        colorField.hidden = false
-        cornflower.hidden = false
-        darkslategrey.hidden = false
-        gold.hidden = false
-        tomato.hidden = true
-        steelblue.hidden = true
-        dimgrey.hidden = true
-    }if(designField.value = 'heart js'){
-        colorField.hidden = false
-        tomato.hidden = false
-        steelblue.hidden = false
-        dimgrey.hidden= false
-        colorField.hidden = true
-        cornflower.hidden=true
-        darkslategrey.hidden=true
+$("#design").change(function() {
+    if(designField.value === "js puns"){
+        colorField.show()
+        console.log("colorField shown")
+        $("option[value='cornflower']").show()
+        console.log("cornflower shown")
+        $("option[value='darkslategrey'").show()
+        console.log("darkslategrey shown")
+        $("option[value='gold'").show()
+        console.log("gold shown")
+        $("option[value='tomato'").hide()
+        console.log("tomato hidden")
+        $("option[value='steelblue'").hide()
+        console.log("steelblue hidden")
+        $("option[value='dimgrey'").hide()
+        console.log("dimgrey hidden")
+        console.log(designField.value + "selected")
+    }else if(designField.value === "heart js"){
+        colorField.show()
+        console.log("colorField shown")
+        $("option[value='cornflower']").hide()
+        console.log("cornflower shown")
+        $("option[value='darkslategrey'").hide()
+        console.log("darkslategrey shown")
+        $("option[value='gold'").hide()
+        console.log("gold shown")
+        $("option[value='tomato'").show()
+        console.log("tomato hidden")
+        $("option[value='steelblue'").show()
+        console.log("steelblue hidden")
+        $("option[value='dimgrey'").show()
+        console.log("dimgrey hidden")
+        console.log(designField.value + "selected")
+    }else{
+        colorField.hide()
     }
-})
+});
 
 let showcost = document.createElement('p')
 
@@ -102,12 +110,12 @@ activitiesField.addEventListener('change',(e)=>{
     let selectedcost = e.target.parentElement.textContent
     if (e.target.checked){
         index = selectedcost.indexOf(('$')+1)
-        cost += parseInt(selectedcost.slice(index,))
+        cost += parseInt(selectedcost.slice(index))
     }
     else{
         index = selectedcost.indexOf(('$')+1)
-
-        cost += parseInt(selectedcost.slice(index,))
+        
+        cost += parseInt(selectedcost.slice(index))
     }
 })
 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
@@ -115,25 +123,35 @@ activitiesField.appendChild(showcost)
 
 
 
-const payfield = document.getElementById("payment")
-const selectcredit = document.getElementById("credit-card")
-const selectpaypal = selectcredit.nextSibling
-const selectbitcoin = selectpaypal.nextSibling
+const payfield = $("#payment")
+const selectcredit = payfield.next()
+const selectpaypal = selectcredit.next()
+const selectbitcoin = selectpaypal.next()
 
-selectpaypal.style = "hidden"
-selectbitcoin.style = "hidden"
-payfield.addEventListener("change", (e) => {
-    selectcredit.style = "hidden"
-    selectpaypal.style = "hidden"
-    selectbitcoin.style = "hidden"
-    if(payfield.value === "Credit Card"){
-        creditcard.style ==="block"
+
+selectpaypal.hide()
+selectbitcoin.hide()
+
+
+$('select #payment').change(function(){
+
+    if($(this).children('option:selected').val() === "Credit Card"){
+        creditcard.show()
+        selectpaypal.hide()
+        bitcoin.hide()
+        console.log("Show credit card")
     }
-    if(payfield.value === "Paypal"){
-        paypal.style ==="block"
+    if($(this).children('option:selected').val() === "Paypal"){
+        selectcredit.hide()
+        paypal.show()
+        bitcoin.hide()
+        console.log("Show paypal")
     }
-    if(payfield.value === "Bitcoin"){
-        bitcoin.style ==="block"
+    if($(this).children('option:selected').val() === "Bitcoin"){
+        selectcredit.hide()
+        selectpaypal.hide()
+        bitcoin.show()
+        console.log("Show bitcoin")
     }
 }) 
 

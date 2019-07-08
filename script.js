@@ -104,19 +104,49 @@ $("#design").change(function() {
 let showcost = document.createElement('p')
 
 
+
 cost = 0
 
 activitiesField.addEventListener('change',(e)=>{
     let selectedcost = e.target.parentElement.textContent
     if (e.target.checked){
-        index = selectedcost.indexOf(('$')+1)
-        cost += parseInt(selectedcost.slice(index,))
-        console.log(parseInt(selectedcost.slice(index,)))
+        schedule = selectedcost.match(/\d+/g)
+        console.log("schedule" + schedule)
+        first = schedule[0]
+        console.log("first"+ first)
+        second = schedule[1]
+        console.log("second"+second)
+        activities = document.querySelectorAll("checkbox")
+        for(i=0;i<activities.length;i++){
+            if(activities[i].innerHTML === selectedcost){
+                return true
+            }
+            text = activities[i].innerHTML
+            scheduleother = text.match(/\d+/g)
+            console.log(text)
+            firstother = scheduleother[0]
+            console.log(firstother)
+            secondother = scheduleother[1]
+            console.log(secondother)
+            if(firstother>=first && firstother<=second | secondother>=first && secondother<=second){
+                activities[i].setAttribute('disabled','disabled')
+            }
+        }
+
+        index = selectedcost.indexOf(('$'))
+        dollars = selectedcost.slice((index+1),)
+        cost += parseInt(dollars)
+        console.log("+" + dollars)
+        console.log("cost:" + cost)
+        showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
     }
     else{
-        index = selectedcost.indexOf(('$')+1)
-        cost += parseInt(selectedcost.slice(index))
-        console.log("-" + console.log(parseInt(selectedcost.slice(index,))))
+        index = selectedcost.indexOf(('$'))
+        dollars = selectedcost.slice((index + 1),)
+        cost -= parseInt(dollars)
+        console.log("-" + dollars)
+        console.log("cost:" + cost)
+        showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
     }
 })
 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"

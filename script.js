@@ -65,35 +65,37 @@ colorField.hide()
 ///Change available colors based on design chosen, if none revert back to none shown
 $("#design").change(function() {
     if(designField.value === "js puns"){
+        colorField.hide()
         colorField.show()
         console.log("colorField shown")
-        $("option[value='cornflower']").show()
+        $("option[value='cornflower']").prop("disabled",false)
         console.log("cornflower shown")
-        $("option[value='darkslategrey'").show()
+        $("option[value='darkslategrey'").prop("disabled",false)
         console.log("darkslategrey shown")
-        $("option[value='gold'").show()
+        $("option[value='gold'").prop("disabled",false)
         console.log("gold shown")
-        $("option[value='tomato'").hide()
+        $("option[value='tomato'").prop("disabled",true)
         console.log("tomato hidden")
-        $("option[value='steelblue'").hide()
+        $("option[value='steelblue'").prop("disabled",true)
         console.log("steelblue hidden")
-        $("option[value='dimgrey'").hide()
+        $("option[value='dimgrey'").prop("disabled",true)
         console.log("dimgrey hidden")
         console.log(designField.value + "selected")
     }else if(designField.value === "heart js"){
+        colorField.hide()
         colorField.show()
         console.log("colorField shown")
-        $("option[value='cornflower']").hide()
+        $("option[value='cornflower']").prop("disabled",true)
         console.log("cornflower hidden")
-        $("option[value='darkslategrey'").hide()
+        $("option[value='darkslategrey'").prop("disabled",true)
         console.log("darkslategrey hidden")
-        $("option[value='gold'").hide()
+        $("option[value='gold'").prop("disabled",true)
         console.log("gold hidden")
-        $("option[value='tomato'").show()
+        $("option[value='tomato'").prop("disabled",false)
         console.log("tomato shown")
-        $("option[value='steelblue'").show()
+        $("option[value='steelblue'").prop("disabled",false)
         console.log("steelblue shown")
-        $("option[value='dimgrey'").show()
+        $("option[value='dimgrey'").prop("disabled",false)
         console.log("dimgrey shown")
         console.log(designField.value + "selected")
     }else{
@@ -128,8 +130,12 @@ activitiesField.addEventListener('change',(e)=>{
             console.log(firstother)
             secondother = scheduleother[1]
             console.log(secondother)
-            if(firstother>=first && firstother<=second | secondother>=first && secondother<=second){
-                activities[i].setAttribute('disabled','disabled')
+            if(firstother>=first && firstother<=second){
+                activities[i].prop("disabled",true)
+            }else if(secondother>=first && secondother<=second){
+                activities[i].prop("disabled",true)
+            }else if(firstother<=first && secondother>=second){
+                activities[i].prop("disabled",true)
             }
         }
 

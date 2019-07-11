@@ -120,16 +120,16 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("second"+second)
         activities = document.querySelectorAll("checkbox")
         for(i=0;i<activities.length;i++){
-            if(activities[i].innerHTML === selectedcost){
+            if(activities[i].parentElement.textContent === selectedcost){
                 return true
             }
-            text = activities[i].innerHTML
+            text = activities[i].parentElement.textContent
             scheduleother = text.match(/\d+/g)
             console.log(text)
             firstother = scheduleother[0]
-            console.log(firstother)
+            console.log("firstother"+ text + firstother)
             secondother = scheduleother[1]
-            console.log(secondother)
+            console.log("secondother" + text + secondother)
             if(firstother>=first && firstother<=second){
                 activities[i].prop("disabled",true)
             }else if(secondother>=first && secondother<=second){

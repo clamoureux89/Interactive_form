@@ -59,16 +59,16 @@ titleField.addEventListener("change", (e)=>{
 
 
 colorField.hide()
-
+$("#color").prepend("<option value='other' selected>Choose a color</option>").prop("defaultSelected")
 
 
 ///Change available colors based on design chosen, if none revert back to none shown
 $("#design").change(function() {
     if(designField.value === "js puns"){
-        //$("#color").prepend("<option value='other' selected>Choose a color</option>")
+        
         colorField.show()
         console.log("colorField shown")
-        $("option[value='cornflower']").show()
+        $("option[value='cornflowerblue']").show()
         console.log("cornflower shown")
         $("option[value='darkslategrey'").show()
         console.log("darkslategrey shown")
@@ -86,7 +86,7 @@ $("#design").change(function() {
         colorField.show()
         //$("#color").prepend("<option value='other' selected>Choose a color</option>")
         console.log("colorField shown")
-        $("option[value='cornflower']").hide()
+        $("option[value='cornflowerblue']").hide()
         console.log("cornflower hidden")
         $("option[value='darkslategrey'").hide()
         console.log("darkslategrey hidden")
@@ -119,12 +119,13 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("first"+ first)
         second = schedule[1]
         console.log("second"+second)
-        activities = document.querySelectorAll("checkbox")
-        for(i=0;i<activities.length;i++){
-            if(activities[i].parentElement.textContent === selectedcost){
+        for(i=0;i<6;i++){
+            if($("activities:nth-child("+i+")").val() === selectedcost){
+                console.log($("activities:nth-child("+i+")"))
                 return true
             }
-            text = activities[i].parentElement.textContent
+            console.log($("activities:nth-child("+i+")"))
+            text = $("activities:nth-child("+i+")").val()
             scheduleother = text.match(/\d+/g)
             console.log(text)
             firstother = scheduleother[0]

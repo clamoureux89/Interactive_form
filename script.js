@@ -119,13 +119,13 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("first"+ first)
         second = schedule[1]
         console.log("second"+second)
-        for(i=0;i<6;i++){
-            if($("activities:nth-child("+i+")").val() === selectedcost){
-                console.log($("activities:nth-child("+i+")"))
+        $(".activities input").each(function(e){
+            if(this.parentElement.val() === selectedcost){
+                console.log(e.val())
                 return true
             }
-            console.log($("activities:nth-child("+i+")"))
-            text = $("activities:nth-child("+i+")").val()
+            console.log(this.parentElement.val())
+            text = this.val()
             scheduleother = text.match(/\d+/g)
             console.log(text)
             firstother = scheduleother[0]
@@ -133,13 +133,13 @@ activitiesField.addEventListener('change',(e)=>{
             secondother = scheduleother[1]
             console.log("secondother" + text + secondother)
             if(firstother>=first && firstother<=second){
-                activities[i].prop("disabled",true)
+                this.prop("disabled",true)
             }else if(secondother>=first && secondother<=second){
-                activities[i].prop("disabled",true)
+                this.prop("disabled",true)
             }else if(firstother<=first && secondother>=second){
-                activities[i].prop("disabled",true)
+                this.prop("disabled",true)
             }
-        }
+        })
 
         index = selectedcost.indexOf(('$'))
         dollars = selectedcost.slice((index+1),)

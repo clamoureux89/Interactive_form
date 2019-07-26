@@ -119,29 +119,60 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("first"+ first)
         second = schedule[1]
         console.log("second"+second)
-        for(i=0;i<$("checkbox").length;i++){
-            let selected = $("checkbox")[i]
-            if(selected.val() === selectedcost){
-                console.log(selected.parentElement.val())
-                return true
-            }
-            console.log(selected.val())
-            text = selected.val()
-            scheduleother = text.match(/\d+/g)
-            console.log(text)
-            firstother = scheduleother[0]
-            console.log("firstother"+ text + firstother)
-            secondother = scheduleother[1]
-            console.log("secondother" + text + secondother)
-            if(firstother>=first && firstother<=second){
-                selected.prop("disabled",true)
-            }else if(secondother>=first && secondother<=second){
-                selected.prop("disabled",true)
-            }else if(firstother<=first && secondother>=second){
-                selected.prop("disabled",true)
+        if (e.target.parentElement.name === "js-frameworks"){
+            console.log(e.target.parentElement.name)
+            $("express").parent.disabled === true
+            $("build-tools").parent.disabled === true
+            if(this.name="unchecked"){
+                $("express").parent.disabled === false
+                $("build-tools").parent.disabled === false
             }
         }
-
+        if (e.target.parentElement.name === "express"){
+            console.log(e.target.parentElement.name)
+            $("js-frameworks").parent.disabled === true
+            $("build-tools").parent.disabled === true
+            if(this.name="unchecked"){
+                $("js-frameworks").parent.disabled === false
+                $("build-tools").parent.disabled === false
+            }
+        }
+        if (e.target.parentElement.name === "build-tools"){
+            console.log(e.target.parentElement.name)
+            $("express").parent.disabled === true
+            $("js-frameworks").parent.disabled === true
+            if(this.name="unchecked"){
+                $("express").parent.disabled === false
+                $("js-frameworks").parent.disabled === false
+            }
+        }
+        if (e.target.parentElement.name === "js-libs"){
+            console.log(e.target.parentElement.name)
+            $("node").parent.disabled === true
+            $("npm").parent.disabled === true
+            if(this.name="unchecked"){
+                $("node").parent.disabled === false
+                $("npm").parent.disabled === false
+            }
+        }
+        if (e.target.parentElement.name === "node"){
+            console.log(e.target.parentElement.name)
+            $("js-libs").parent.disabled === true
+            $("npm").parent.disabled === true
+            if(this.name="unchecked"){
+                $("js-libs").parent.disabled === false
+                $("npm").parent.disabled === false
+            }
+        }
+        if (e.target.parentElement.name === "npm"){
+            console.log(e.target.parentElement.name)
+            $("node").disabled === true
+            $("js-libs").parent.disabled === true
+            if(this.name="unchecked"){
+                $("node").parent.disabled === false
+                $("js-libs").parent.disabled === false
+            }
+        }
         index = selectedcost.indexOf(('$'))
         dollars = selectedcost.slice((index+1),)
         cost += parseInt(dollars)

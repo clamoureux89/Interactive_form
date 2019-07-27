@@ -111,6 +111,7 @@ let showcost = document.createElement('p')
 cost = 0
 
 activitiesField.addEventListener('change',(e)=>{
+    console.log(e.target.name)
     let selectedcost = e.target.parentElement.textContent
     if (e.target.checked){
         schedule = selectedcost.match(/\d+/g)
@@ -119,58 +120,59 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("first"+ first)
         second = schedule[1]
         console.log("second"+second)
-        if (e.target.parentElement.name === "js-frameworks"){
-            console.log(e.target.parentElement.name)
-            $("express").parent.disabled === true
-            $("build-tools").parent.disabled === true
-            if(this.name="unchecked"){
-                $("express").parent.disabled === false
-                $("build-tools").parent.disabled === false
+        if (e.target.name === "js-frameworks"){
+            console.log(e.target.parentElement)
+            console.log(e.target.text)
+            $("express").prop("disabled",true)
+            $("build-tools").prop("disabled",true)
+            if(this ==="unchecked"){
+                $("express").prop("disabled",false)
+                $("build-tools").prop("disabled",false)
             }
         }
-        if (e.target.parentElement.name === "express"){
-            console.log(e.target.parentElement.name)
-            $("js-frameworks").parent.disabled === true
-            $("build-tools").parent.disabled === true
-            if(this.name="unchecked"){
-                $("js-frameworks").parent.disabled === false
-                $("build-tools").parent.disabled === false
+        if (e.target.name === "express"){
+            console.log(e.target.name)
+            $("js-frameworks").prop("disabled",true)
+            $("build-tools").prop("disabled",true)
+            if(this ==="unchecked"){
+                $("js-frameworks").prop("disabled",false)
+                $("build-tools").prop("disabled",false)
             }
         }
-        if (e.target.parentElement.name === "build-tools"){
-            console.log(e.target.parentElement.name)
-            $("express").parent.disabled === true
-            $("js-frameworks").parent.disabled === true
-            if(this.name="unchecked"){
-                $("express").parent.disabled === false
-                $("js-frameworks").parent.disabled === false
+        if (e.target.name === "build-tools"){
+            console.log(e.target.name)
+            $("express").add("disabled")
+            $("js-frameworks").prop("disabled",true)
+            if(this ==="unchecked"){
+                $("express").prop("disabled",false)
+                $("js-frameworks").prop("disabled",false)
             }
         }
-        if (e.target.parentElement.name === "js-libs"){
-            console.log(e.target.parentElement.name)
-            $("node").parent.disabled === true
-            $("npm").parent.disabled === true
-            if(this.name="unchecked"){
-                $("node").parent.disabled === false
-                $("npm").parent.disabled === false
+        if (e.target.name === "js-libs"){
+            console.log(e.target.name)
+            $("node").prop("disabled",true)
+            $("npm").prop("disabled",true)
+            if(this ==="unchecked"){
+                $("node").prop("disabled",false)
+                $("npm").prop("disabled",false)
             }
         }
-        if (e.target.parentElement.name === "node"){
-            console.log(e.target.parentElement.name)
-            $("js-libs").parent.disabled === true
-            $("npm").parent.disabled === true
-            if(this.name="unchecked"){
-                $("js-libs").parent.disabled === false
-                $("npm").parent.disabled === false
+        if (e.target.name === "node"){
+            console.log(e.target.name)
+            $("js-libs").prop("disabled",true)
+            $("npm").prop("disabled",true)
+            if(this ==="unchecked"){
+                $("js-libs").prop("disabled",false)
+                $("npm").prop("disabled",false)
             }
         }
-        if (e.target.parentElement.name === "npm"){
-            console.log(e.target.parentElement.name)
-            $("node").disabled === true
-            $("js-libs").parent.disabled === true
-            if(this.name="unchecked"){
-                $("node").parent.disabled === false
-                $("js-libs").parent.disabled === false
+        if (e.target.name === "npm"){
+            console.log(e.target.name)
+            $("node").prop("disabled",true)
+            $("js-libs").prop("disabled",true)
+            if(this ==="unchecked"){
+                $("node").prop("disabled",false)
+                $("js-libs").prop("disabled",false)
             }
         }
         index = selectedcost.indexOf(('$'))

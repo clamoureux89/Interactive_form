@@ -114,7 +114,7 @@ cost = 0
 activitiesField.addEventListener('change',(e)=>{
     console.log(e.target.name)
     
-    if (e.target.name in morning){
+    for(i=0;i<morning.length;i++) {if(e.target.name === morning [i]){
         /**schedule = selectedcost.match(/\d+/g)
         console.log("schedule" + schedule)
         first = schedule[0]
@@ -128,7 +128,8 @@ activitiesField.addEventListener('change',(e)=>{
             }
         }
     }
-    if (e.target.name in afternoon){
+}
+    for(i=0;i<afternoon.length;i++){if (e.target.name === afternoon[i]){
         console.log(e.target.name)
         /**schedule = selectedcost.match(/\d+/g)
         console.log("schedule" + schedule)
@@ -144,7 +145,7 @@ activitiesField.addEventListener('change',(e)=>{
         }
     }
         
-})
+}})
 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
 activitiesField.appendChild(showcost)
 

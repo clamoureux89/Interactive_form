@@ -123,8 +123,14 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("second"+second)*/
         for(i=0;i<morning.length;i++){
             if(morning[i] != e.target.name){
-                $(morning[i]).prop("disabled",true)
+                if($("#"+morning[i]).prop("disabled",true)){
+                    $("#"+morning[i]).prop("disabled",false)
+                    console.log("#"+morning[i] + "enabled")
+                }
+                else{    
+                $("#"+morning[i]).prop("disabled",true)
                 console.log(morning[i] + "disabled")
+                }
             }
         }
     }
@@ -139,8 +145,13 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("second"+second)*/
         for(i=0;i<afternoon.length;i++){
             if(afternoon[i] != e.target.name){
-                $(afternoon[i]).prop("disabled",true)
+                if($(afternoon[i]).prop("disabled",true)){
+                    $("#"+afternoon[i]).prop("disabled",false)
+                    console.log(afternoon[i] + "enabled")
+                }else{
+                $("#"+afternoon[i]).prop("disabled",true)
                 console.log(afternoon[i] + "disabled")
+                }
             }
         }
     }

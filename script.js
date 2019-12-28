@@ -48,13 +48,12 @@ mailField.addEventListener("focusout", ()=>{
 
 document.getElementById("job_role_other").hidden = true
 titleField.addEventListener("change", ()=>{
-    console.log(titleField.value)
-    if(titleField.value = 'other'){
+    field = titleField.value
+    console.log(field)
+    document.getElementById("job_role_other").hidden = true
+    if(field === "other"){
         document.getElementById("job_role_other").hidden = false
-    }else{
-        document.getElementById("job_role_other").hidden = true
-    } 
-        
+    }    
     }
 )
 

@@ -47,11 +47,16 @@ mailField.addEventListener("focusout", ()=>{
 ///Add feature to other in job roles so a new input field is displayed when other is selected
 
 document.getElementById("job_role_other").hidden = true
-titleField.addEventListener("change", (e)=>{
-    if(document.getElementsByName("user_title").textContent = 'other'){
+titleField.addEventListener("change", ()=>{
+    console.log(titleField.value)
+    if(titleField.value = 'other'){
         document.getElementById("job_role_other").hidden = false
+    }else{
+        document.getElementById("job_role_other").hidden = true
+    } 
+        
     }
-})
+)
 
 ///By default have all colors hidden
 

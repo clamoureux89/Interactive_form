@@ -127,7 +127,7 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("second"+second)*/
         for(i=0;i<morning.length;i++){
             if(morning[i] != e.target.name){
-                document.querySelector(morning[i]).disabled = true
+                document.getElementsByName(morning[i]).hidden = true
                 console.log(morning[i]+ "disabled")
         }
         
@@ -143,7 +143,7 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("second"+second)*/
         for(i=0;i<afternoon.length;i++){
             if(afternoon[i] != e.target.name){
-                document.querySelector(afternoon[i]).disabled = true
+                document.getElementsByName(afternoon[i]).hidden = true
                 console.log(afternoon[i] + "disabled")
             }
         }

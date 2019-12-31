@@ -149,7 +149,7 @@ activitiesField.addEventListener('change',(e)=>{
         }
     }
 }     
-}})
+})
 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
 activitiesField.appendChild(showcost)
 

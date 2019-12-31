@@ -127,7 +127,7 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("second"+second)*/
         for(i=0;i<morning.length;i++){
             if(morning[i] != e.target.name){
-                document.getElementsByName(morning[i]).disabled = true
+                document.getElementsByName(morning[i]).style.display = "none"
                 console.log(document.getElementsByName(morning[i]))}
         }
         
@@ -143,7 +143,7 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("second"+second)*/
         for(i=0;i<afternoon.length;i++){
             if(afternoon[i] != e.target.name){
-                document.getElementsByName(afternoon[i]).disabled = true
+                document.getElementsByName(afternoon[i]).style.display = "none"
                 console.log(document.getElementsByName(afternoon[i]))
             }
         }

@@ -126,9 +126,13 @@ activitiesField.addEventListener('change',(e)=>{
         second = schedule[1]
         console.log("second"+second)*/
         for(i=0;i<morning.length;i++){
-            if(morning[i] != e.target.name){
-                $("option[value=" + morning[i]+"]").prop("disabled", true)
-                console.log($("option[value=" + morning[i]+"]"))}
+            if(morning[i] != e.target.name){if(e.target.checked = true){
+                $(".activities input[name="+morning[i] + "]").prop("disabled", true)
+                console.log($(".activities input[name="+afternoon[i] + "]"))
+            }if(e.target.checked = false){
+                $(".activities input[name="+morning[i] + "]").prop("disabled", false)
+                console.log($(".activities input[name="+morning[i] + "]") + "enabled")
+            }
         }
         
     }
@@ -143,13 +147,22 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("second"+second)*/
         for(i=0;i<afternoon.length;i++){
             if(afternoon[i] != e.target.name){
-                $("option[value="+afternoon[i] + "]").prop("disabled", true)
-                console.log($("option[value="+afternoon[i] + "]"))
+                if(e.target.checked = true){
+                    e.target.checked = false
+                    $(".activities input[name="+afternoon[i] + "]").prop("disabled", true)
+                    console.log($(".activities input[name="+afternoon[i] + "]"))
+                }if(e.target.checked = false){
+                    e.target.checked = true
+                    $(".activities input[name="+afternoon[i] + "]").prop("disabled", false)
+                    console.log($(".activities input[name="+afternoon[i] + "]") + "enabled")
+                }
             }
         }
     }
 }     
+}
 })
+
 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
 activitiesField.appendChild(showcost)
 

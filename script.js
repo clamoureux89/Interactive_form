@@ -115,21 +115,17 @@ let afternoon = ["node","npm","js-libs"]
 
 cost = 0
 
-activitiesField.addEventListener('change',(e)=>{
+$("activities input").on('change',(e)=>{
     console.log(e.target.name)
     
     for(i=0;i<morning.length;i++) {if(e.target.name === morning [i]){
-        /**schedule = selectedcost.match(/\d+/g)
-        console.log("schedule" + schedule)
-        first = schedule[0]
-        console.log("first"+ first)
-        second = schedule[1]
-        console.log("second"+second)*/
         for(i=0;i<morning.length;i++){
-            if(morning[i] != e.target.name){if(e.target.checked = true){
+            if(morning[i] != e.target.name)
+            {if(afternoon[i] != e.target.name){
                 $(".activities input[name="+morning[i] + "]").prop("disabled", true)
                 console.log($(".activities input[name="+afternoon[i] + "]"))
-            }if(e.target.checked = false){
+            }if(e.target.checked = true){
+                e.target.checked = false
                 $(".activities input[name="+morning[i] + "]").prop("disabled", false)
                 console.log($(".activities input[name="+morning[i] + "]") + "enabled")
             }
@@ -137,22 +133,15 @@ activitiesField.addEventListener('change',(e)=>{
         
     }
 }
-    for(i=0;i<afternoon.length;i++){if (e.target.name === afternoon[i]){
+    for(i=0;i<afternoon.length;i++)
+        {if (e.target.name === afternoon[i]){
         console.log(e.target.name)
-        /**schedule = selectedcost.match(/\d+/g)
-        console.log("schedule" + schedule)
-        first = schedule[0]
-        console.log("first"+ first)
-        second = schedule[1]
-        console.log("second"+second)*/
         for(i=0;i<afternoon.length;i++){
             if(afternoon[i] != e.target.name){
-                if(e.target.checked = true){
-                    e.target.checked = false
                     $(".activities input[name="+afternoon[i] + "]").prop("disabled", true)
                     console.log($(".activities input[name="+afternoon[i] + "]"))
-                }if(e.target.checked = false){
-                    e.target.checked = true
+                }if(e.target.checked = true){
+                    e.target.checked = false
                     $(".activities input[name="+afternoon[i] + "]").prop("disabled", false)
                     console.log($(".activities input[name="+afternoon[i] + "]") + "enabled")
                 }
@@ -161,7 +150,7 @@ activitiesField.addEventListener('change',(e)=>{
     }
 }     
 }
-})
+)
 
 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
 activitiesField.appendChild(showcost)

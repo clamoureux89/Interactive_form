@@ -113,44 +113,76 @@ let showcost = document.createElement('p')
 let morning = ["js-frameworks","express","build-tools"]
 let afternoon = ["node","npm","js-libs"]
 
-cost = 0
+let cost = 0
 
-$("activities input").on('change',(e)=>{
+activitiesField.addEventListener('change',(e)=>{
     console.log(e.target.name)
-    
+    if(e.target === $(".activities input")[0]){
+        if(e.target.checked){
+            cost +=200
+            showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+        }else{
+            cost -=200
+            showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+        }
+        console.log("cost = "+cost)
     for(i=0;i<morning.length;i++) {if(e.target.name === morning [i]){
+        /**schedule = selectedcost.match(/\d+/g)
+        console.log("schedule" + schedule)
+        first = schedule[0]
+        console.log("first"+ first)
+        second = schedule[1]
+        console.log("second"+second)*/
         for(i=0;i<morning.length;i++){
-            if(morning[i] != e.target.name)
-            {if(afternoon[i] != e.target.name){
-                $(".activities input[name="+morning[i] + "]").prop("disabled", true)
-                console.log($(".activities input[name="+afternoon[i] + "]"))
-            }if(e.target.checked = true){
-                e.target.checked = false
-                $(".activities input[name="+morning[i] + "]").prop("disabled", false)
-                console.log($(".activities input[name="+morning[i] + "]") + "enabled")
+            if(morning[i] != e.target.name){
+                if(e.target.checked){
+                    cost +=100
+                    $("."+morning[i]).prop("disabled", true)
+                    console.log($("."+afternoon[i]))
+                    console.log("cost = "+cost)
+                    showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+                }   
+                else{
+                    cost -=100
+                    $("."+morning[i]).prop("disabled", false)
+                    console.log($("."+morning[i]) + "enabled")
+                    console.log("cost = "+cost)
+                    showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
             }
         }
         
     }
 }
-    for(i=0;i<afternoon.length;i++)
-        {if (e.target.name === afternoon[i]){
+    for(i=0;i<afternoon.length;i++){
+        if (e.target.name === afternoon[i]){
         console.log(e.target.name)
+        /**schedule = selectedcost.match(/\d+/g)
+        console.log("schedule" + schedule)
+        first = schedule[0]
+        console.log("first"+ first)
+        second = schedule[1]
+        console.log("second"+second)*/
         for(i=0;i<afternoon.length;i++){
             if(afternoon[i] != e.target.name){
-                    $(".activities input[name="+afternoon[i] + "]").prop("disabled", true)
-                    console.log($(".activities input[name="+afternoon[i] + "]"))
-                }if(e.target.checked = true){
-                    e.target.checked = false
-                    $(".activities input[name="+afternoon[i] + "]").prop("disabled", false)
-                    console.log($(".activities input[name="+afternoon[i] + "]") + "enabled")
+                if(e.target.checked){
+                    cost += 100
+                    $("."+afternoon[i]).prop("disabled", true)
+                    console.log($("."+afternoon[i]))
+                    console.log("cost = "+cost)
+                    showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+                }else{
+                    cost -=100
+                    $("."+afternoon[i]).prop("disabled", false)
+                    console.log($("."+afternoon[i]) + "enabled")
+                    showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
                 }
             }
         }
     }
 }     
 }
-)
+}
+})
 
 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
 activitiesField.appendChild(showcost)
@@ -178,7 +210,7 @@ $('#payment').change(function(){
     if(payfield.val() === "paypal"){
         selectcredit.hide()
         selectpaypal.show()
-        selectbitcoin.hide()
+        selectbitcoin.hide() 
         console.log("Show paypal")
     }
     if(payfield.val() === "bitcoin"){

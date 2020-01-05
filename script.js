@@ -135,20 +135,23 @@ activitiesField.addEventListener('change',(e)=>{
         console.log("second"+second)*/
         for(i=0;i<morning.length;i++){
             
-            if(e.target.checked)
-                {if(morning[i] != e.target.name){
-                    cost +=50
-                    $(morning[i]).prop("disabled", true)
-                    console.log($(afternoon[i]))
-                    console.log("cost = "+cost)
-                    showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+            if(e.target.checked){
+                
+                if(morning[i] != e.target.name){
+                    
+                $("input[name=" + morning[i]).prop("disabled", true)
+                console.log($("input[name=" +morning[i]))
+                console.log("cost = "+cost)
+                showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
                 }   
-                else{if(morning[i] != e.target.name){
-                    cost -=50
-                    $(morning[i]).prop("disabled", false)
-                    console.log($(morning[i]) + "enabled")
-                    console.log("cost = "+cost)
-                    showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+            else{
+                
+                if(morning[i] != e.target.name){
+                    
+                $("input[name=" + morning[i]).prop("disabled", false)
+                console.log($("input[name=" +morning[i]) + "enabled")
+                console.log("cost = "+cost)
+                showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
             }
         }
     
@@ -167,15 +170,15 @@ activitiesField.addEventListener('change',(e)=>{
             if(e.target.checked){
                 if(afternoon[i] != e.target.name){
                     cost += 50
-                    $(afternoon[i]).prop("disabled", true)
-                    console.log($(afternoon[i]))
+                    $("input[name=" + afternoon[i]).prop("disabled", true)
+                    console.log($("input[name=" + afternoon[i]))
                     console.log("cost = "+cost)
                     showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
                 }}
             else{
                     cost -=50
-                    $(afternoon[i]).prop("disabled", false)
-                    console.log($(+afternoon[i]) + "enabled")
+                    $("input[name=" + afternoon[i]).prop("disabled", false)
+                    console.log($("input[name=" + afternoon[i]) + "enabled")
                     showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
                 }
             }

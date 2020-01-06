@@ -138,7 +138,8 @@ activitiesField.addEventListener('change',(e)=>{
                 console.log($("input[name=" +morning[i]))
                 console.log("cost = "+cost)
                 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
-                }   
+                }
+            }       
             else{
                 cost -=100
                 if(morning[i] != e.target.name){
@@ -169,7 +170,7 @@ activitiesField.addEventListener('change',(e)=>{
                     $("input[name=" + afternoon[i]).prop("disabled", false)
                     console.log($("input[name=" + afternoon[i]) + "enabled")
                     showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
-                }}
+                }
             }
         }
     }     

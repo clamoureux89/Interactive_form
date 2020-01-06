@@ -125,18 +125,13 @@ activitiesField.addEventListener('change',(e)=>{
             cost -=200
             showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
         }
+    }
         console.log("cost = "+cost)
-    for(i=0;i<morning.length;i++) {if(e.target.name === morning [i]){
-        /**schedule = selectedcost.match(/\d+/g)
-        console.log("schedule" + schedule)
-        first = schedule[0]
-        console.log("first"+ first)
-        second = schedule[1]
-        console.log("second"+second)*/
-        for(i=0;i<morning.length;i++){
+    for(i=0;i<morning.length;i++) {
+        if(e.target.name === morning [i]){
             
             if(e.target.checked){
-                
+                cost+=100
                 if(morning[i] != e.target.name){
                     
                 $("input[name=" + morning[i]).prop("disabled", true)
@@ -145,7 +140,7 @@ activitiesField.addEventListener('change',(e)=>{
                 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
                 }   
             else{
-                
+                cost -=100
                 if(morning[i] != e.target.name){
                     
                 $("input[name=" + morning[i]).prop("disabled", false)
@@ -154,20 +149,13 @@ activitiesField.addEventListener('change',(e)=>{
                 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
             }
         }
-    
-    
+    }
 }
     for(i=0;i<afternoon.length;i++){
         if (e.target.name === afternoon[i]){
         console.log(e.target.name)
-        /**schedule = selectedcost.match(/\d+/g)
-        console.log("schedule" + schedule)
-        first = schedule[0]
-        console.log("first"+ first)
-        second = schedule[1]
-        console.log("second"+second)*/
-        for(i=0;i<afternoon.length;i++){
             if(e.target.checked){
+                cost+=100
                 if(afternoon[i] != e.target.name){
                     cost += 50
                     $("input[name=" + afternoon[i]).prop("disabled", true)
@@ -176,18 +164,17 @@ activitiesField.addEventListener('change',(e)=>{
                     showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
                 }}
             else{
-                    cost -=50
+                cost -=100
+                if(afternoon[i] != e.target.name){
                     $("input[name=" + afternoon[i]).prop("disabled", false)
                     console.log($("input[name=" + afternoon[i]) + "enabled")
                     showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
-                }
+                }}
             }
         }
-    }
-}     
+    }     
 }
-}
-    }})
+)
 
 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
 activitiesField.appendChild(showcost)

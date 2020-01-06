@@ -88,7 +88,6 @@ $("#design").change(function() {
     }else if(designField.value === "heart js"){
         colorField.hide()
         colorField.show()
-        //$("#color").prepend("<option value='other' selected>Choose a color</option>")
         console.log("colorField shown")
         $("option[value='cornflowerblue']").hide()
         console.log("cornflower hidden")
@@ -117,16 +116,23 @@ let cost = 0
 
 activitiesField.addEventListener('change',(e)=>{
     console.log(e.target.name)
+
+
+    //Add cost for attending main conference 
     if(e.target === $(".activities input")[0]){
         if(e.target.checked){
             cost +=200
             showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
-        }else{
+        }
+        else{
             cost -=200
             showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
         }
     }
         console.log("cost = "+cost)
+    
+    
+    //Add cost and grey out other morning options when morning option is selected
     for(i=0;i<morning.length;i++) {
         if(e.target.name === morning [i]){
             
@@ -148,22 +154,24 @@ activitiesField.addEventListener('change',(e)=>{
                 console.log($("input[name=" +morning[i]) + "enabled")
                 console.log("cost = "+cost)
                 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+                }
             }
         }
-    }
-}
+    }   
+
+    //Add cost and grey out other afternoon options when afternoon option is selected
     for(i=0;i<afternoon.length;i++){
         if (e.target.name === afternoon[i]){
         console.log(e.target.name)
             if(e.target.checked){
                 cost+=100
                 if(afternoon[i] != e.target.name){
-                    cost += 50
                     $("input[name=" + afternoon[i]).prop("disabled", true)
                     console.log($("input[name=" + afternoon[i]))
                     console.log("cost = "+cost)
                     showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
-                }}
+                }
+            }
             else{
                 cost -=100
                 if(afternoon[i] != e.target.name){
@@ -174,8 +182,7 @@ activitiesField.addEventListener('change',(e)=>{
             }
         }
     }     
-}
-)
+})
 
 showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
 activitiesField.appendChild(showcost)

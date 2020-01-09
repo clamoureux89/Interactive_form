@@ -123,62 +123,69 @@ activitiesField.addEventListener('change',(e)=>{
         if(e.target.checked){
             cost +=200
             showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+            console.log("checked")
         }
         else{
             cost -=200
             showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+            console.log("unchecked")
         }
     }
         console.log("cost = "+cost)
     
     
     //Add cost and grey out other morning options when morning option is selected
-    for(i=0;i<morning.length;i++) {
-        if(e.target.name === morning [i]){
+    for(i=0;i<morning.length;i++){
+        if (e.target.name === morning[i]){
+        console.log(e.target.name)
             
-            if(e.target.checked){
                 cost+=100
-                if(morning[i] != e.target.name){
-                    
-                $("input[name=" + morning[i]).prop("disabled", true)
-                console.log($("input[name=" +morning[i]))
-                console.log("cost = "+cost)
-                showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
-                }
-            }       
-            else{
-                cost -=100
-                if(morning[i] != e.target.name){
-                    
-                $("input[name=" + morning[i]).prop("disabled", false)
-                console.log($("input[name=" +morning[i]) + "enabled")
-                console.log("cost = "+cost)
-                showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
-                }
+                for(i=0;i<morning.length;i++){
+                    if(morning[i] != e.target.name){
+                        if(e.target.checked){
+                        $("input[name=" + morning[i]).prop("disabled", true)
+                        console.log($("input[name=" + morning[i]))
+                        console.log("cost = "+cost)
+                        showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+                        console.log("checked")
+                    }
+                    else{
+                        cost -=100
+                        console.log("unchecked")
+                        $("input[name=" + morning[i]).prop("disabled", false)
+                        console.log($("input[name=" + morning[i]) + "enabled")
+                        showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+                        
+                    }
+                }            
             }
         }
-    }   
+    }     
 
     //Add cost and grey out other afternoon options when afternoon option is selected
     for(i=0;i<afternoon.length;i++){
         if (e.target.name === afternoon[i]){
         console.log(e.target.name)
-            if(e.target.checked){
+            
                 cost+=100
-                if(afternoon[i] != e.target.name){
-                    $("input[name=" + afternoon[i]).prop("disabled", true)
-                    console.log($("input[name=" + afternoon[i]))
-                    console.log("cost = "+cost)
-                    showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
-                }
-            }
-            else{
-                cost -=100
-                if(afternoon[i] != e.target.name){
-                    $("input[name=" + afternoon[i]).prop("disabled", false)
-                    console.log($("input[name=" + afternoon[i]) + "enabled")
-                    showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
-                }
+                for(i=0;i<afternoon.length;i++){
+                    if(afternoon[i] != e.target.name){
+                        if(e.target.checked){
+                        $("input[name=" + afternoon[i]).prop("disabled", true)
+                        console.log($("input[name=" + afternoon[i]))
+                        console.log("cost = "+cost)
+                        showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+                        console.log("checked")
+                    }
+                    else{
+                        cost -=100
+                        console.log("unchecked")
+                        $("input[name=" + afternoon[i]).prop("disabled", false)
+                        console.log($("input[name=" + afternoon[i]) + "enabled")
+                        showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
+                        
+                    }
+                }            
             }
         }
     }     

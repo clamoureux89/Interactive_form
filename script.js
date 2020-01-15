@@ -279,35 +279,41 @@ $("submit").on("hover", ()=> {if(namecheck,mailcheck,titlecheck,zipcheck,cvvchec
     $("submit").prop("disabled",false)}
 })
 
-$("submit").on("click",()=>{
+document.getElementsByName("submit").addEventListener("click",()=>{
     if (namecheck = false){
         namecheck= "<p> Name invalid <p>"
         namecheck.style.color = "red"
         nameField.appendChild(namecheck)
+        console.log(namecheck)
     }
     if(mailcheck = false){
         mailcheck= "<p> Email invalid <p>"
         mailcheck.style.color = "red"
         mailField.appendChild(mailcheck)
+        console.log(mailcheck)
     }
     if (titlecheck = false){
         titlecheck= "<p> Title invalid <p>"
         titlecheck.style.color = "red"
         titleField.appendChild(titlecheck)
+        console.log(titlecheck)
     }
     if( zipcheck = false){
         zipcheck= "<p> Zip invalid <p>"
         zipcheck.style.color = "red"
         zip.appendChild(zipcheck)
+        console.log(zipcheck)
     }
     if (cvvcheck = false){
         cvvcheck= "<p> CVV invalid <p>"
         cvvcheck.style.color = "red"
         cvv.appendChild(cvvcheck)
+        console.log(cvvcheck)
     }
     if (credit = false){
         creditcheck= "<p> Credit Card number invalid <p>"
         creditcheck.style.color = "red"
         credit.appendChild(creditcheck)
+        console.log(creditcheck)
     }
 })

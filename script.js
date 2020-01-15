@@ -9,8 +9,13 @@ let activitiesField = document.querySelector(".activities")
 let zip = document.getElementById("zip")
 let cvv = document.getElementById("cvv")
 let creditcard = document.getElementById("cc-num")
-
-
+let namecheck = false
+let mailcheck = false
+let titlecheck = false
+let zipcheck = false
+let cvvcheck = false
+let creditcheck = false
+let allgood = 0
 
 ///Upon loading focus on the first input field so user can start typing
 nameField.focus()
@@ -23,8 +28,11 @@ nameField.addEventListener("focusout",()=>{
     valid = /^[a-zA-Z\s]+$/.test(nameField.value)
     if (valid) {
         nameField.style.backgroundColor = "lightgreen";
+        namecheck = true
+        
       }else{
         nameField.style.backgroundColor = "red";
+        namecheck = false
       }
     console.log(nameField.value +"checked")
 })
@@ -37,8 +45,10 @@ mailField.addEventListener("focusout", ()=>{
     valid= /^[^@]+@[^@.]+\.[a-z]{3}$/i.test(mailField.value);
     if (valid) {
     mailField.style.backgroundColor = "lightgreen";
+    mailcheck = true
   }else{
       mailField.style.backgroundColor = "red"
+      mailcheck = false
   }
     console.log(mailField.value +"checked")
 })
@@ -261,4 +271,43 @@ zip.addEventListener("focusout", ()=>{
       zip.style.backgroundColor = "red"
   }
     console.log(zip.value +"checked")
+})
+
+$("submit").prop("disabled",true)
+
+$("submit").on("hover", ()=> {if(namecheck,mailcheck,titlecheck,zipcheck,cvvcheck,credit){
+    $("submit").prop("disabled",false)}
+})
+
+$("submit").on("click",()=>{
+    if (namecheck = false){
+        namecheck= "<p> Name invalid <p>"
+        namecheck.style.color = "red"
+        nameField.appendChild(namecheck)
+    }
+    if(mailcheck = false){
+        mailcheck= "<p> Email invalid <p>"
+        mailcheck.style.color = "red"
+        mailField.appendChild(mailcheck)
+    }
+    if (titlecheck = false){
+        titlecheck= "<p> Title invalid <p>"
+        titlecheck.style.color = "red"
+        titleField.appendChild(titlecheck)
+    }
+    if( zipcheck = false){
+        zipcheck= "<p> Zip invalid <p>"
+        zipcheck.style.color = "red"
+        zip.appendChild(zipcheck)
+    }
+    if (cvvcheck = false){
+        cvvcheck= "<p> CVV invalid <p>"
+        cvvcheck.style.color = "red"
+        cvv.appendChild(cvvcheck)
+    }
+    if (credit = false){
+        creditcheck= "<p> Credit Card number invalid <p>"
+        creditcheck.style.color = "red"
+        credit.appendChild(creditcheck)
+    }
 })

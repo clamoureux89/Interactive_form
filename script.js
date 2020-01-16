@@ -316,4 +316,8 @@ document.getElementsByName("submit").addEventListener("click",()=>{
         credit.appendChild(creditcheck)
         console.log(creditcheck)
     }
+    else{
+        allgood
+        
+    }
 })

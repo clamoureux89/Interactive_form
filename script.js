@@ -9,13 +9,13 @@ let activitiesField = document.querySelector(".activities")
 let zip = document.getElementById("zip")
 let cvv = document.getElementById("cvv")
 let creditcard = document.getElementById("cc-num")
-let namecheck = false
-let mailcheck = false
-let titlecheck = false
-let zipcheck = false
-let cvvcheck = false
-let creditcheck = false
-let allgood = 0
+let namecheck = 0
+let mailcheck = 0
+let titlecheck = 0
+let zipcheck = 0
+let cvvcheck = 0
+let creditcheck = 0
+let allgood = namecheck + mailcheck + zipcheck + cvvcheck + creditcheck
 
 ///Upon loading focus on the first input field so user can start typing
 nameField.focus()
@@ -28,11 +28,11 @@ nameField.addEventListener("focusout",()=>{
     valid = /^[a-zA-Z\s]+$/.test(nameField.value)
     if (valid) {
         nameField.style.backgroundColor = "lightgreen";
-        namecheck = true
+        namecheck = 1
         
       }else{
         nameField.style.backgroundColor = "red";
-        namecheck = false
+        namecheck = 0
       }
     console.log(nameField.value +"checked")
 })
@@ -45,10 +45,10 @@ mailField.addEventListener("focusout", ()=>{
     valid= /^[^@]+@[^@.]+\.[a-z]{3}$/i.test(mailField.value);
     if (valid) {
     mailField.style.backgroundColor = "lightgreen";
-    mailcheck = true
+    mailcheck = 1
   }else{
       mailField.style.backgroundColor = "red"
-      mailcheck = false
+      mailcheck = 0
   }
     console.log(mailField.value +"checked")
 })
@@ -56,11 +56,11 @@ mailField.addEventListener("focusout", ()=>{
 
 ///Add feature to other in job roles so a new input field is displayed when other is selected
 
-document.getElementById("job_role_other").hidden = true
+document.getElementById("job_role_other").hidden = 1
 titleField.addEventListener("change", ()=>{
     field = titleField.value
     console.log(field)
-    document.getElementById("job_role_other").hidden = true
+    document.getElementById("job_role_other").hidden = 1
     if(field === "other"){
         document.getElementById("job_role_other").hidden = false
     }    
@@ -153,7 +153,7 @@ activitiesField.addEventListener('change',(e)=>{
                 for(i=0;i<morning.length;i++){
                     if(morning[i] != e.target.name){
                         if(e.target.checked){
-                        $("input[name=" + morning[i]).prop("disabled", true)
+                        $("input[name=" + morning[i]).prop("disabled", 1)
                         console.log($("input[name=" + morning[i]))
                         console.log("cost = "+cost)
                         showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
@@ -181,7 +181,7 @@ activitiesField.addEventListener('change',(e)=>{
                 for(i=0;i<afternoon.length;i++){
                     if(afternoon[i] != e.target.name){
                         if(e.target.checked){
-                        $("input[name=" + afternoon[i]).prop("disabled", true)
+                        $("input[name=" + afternoon[i]).prop("disabled", 1)
                         console.log($("input[name=" + afternoon[i]))
                         console.log("cost = "+cost)
                         showcost.innerHTML = "<p>Total Cost : $" + cost + "</p>"
@@ -244,8 +244,10 @@ creditcard.addEventListener("focusout", ()=>{
     valid= /^[0-9]{16}$/i.test(creditcard.value);
     if (valid) {
     creditcard.style.backgroundColor = "lightgreen";
+    creditcheck = 1
   }else{
       creditcard.style.backgroundColor = "red"
+      creditcheck = 0
   }
     console.log(creditcard.value +"checked")
 })
@@ -255,8 +257,10 @@ cvv.addEventListener("focusout", ()=>{
     valid= /^[0-9]{3}$/i.test(cvv.value);
     if (valid) {
     cvv.style.backgroundColor = "lightgreen";
+    cvvcheck = 1
   }else{
       cvv.style.backgroundColor = "red"
+      cvvcheck = 0
   }
     console.log(cvv.value +"checked")
 })
@@ -267,57 +271,59 @@ zip.addEventListener("focusout", ()=>{
     valid= /^[0-9]{6}$/i.test(zip.value);
     if (valid) {
     zip.style.backgroundColor = "lightgreen";
+    zipcheck = 1
   }else{
       zip.style.backgroundColor = "red"
+      zipcheck = 0
   }
     console.log(zip.value +"checked")
 })
 
-$("submit").prop("disabled",true)
+$("submit").prop("disabled", true)
 
 $("submit").on("hover", ()=> {if(namecheck,mailcheck,titlecheck,zipcheck,cvvcheck,credit){
     $("submit").prop("disabled",false)}
 })
 
 document.getElementsByName("submit").addEventListener("click",()=>{
-    if (namecheck = false){
+    if (namecheck = 0){
         namecheck= "<p> Name invalid <p>"
         namecheck.style.color = "red"
         nameField.appendChild(namecheck)
         console.log(namecheck)
     }
-    if(mailcheck = false){
+    if(mailcheck = 0){
         mailcheck= "<p> Email invalid <p>"
         mailcheck.style.color = "red"
         mailField.appendChild(mailcheck)
         console.log(mailcheck)
     }
-    if (titlecheck = false){
+    if (titlecheck = 0){
         titlecheck= "<p> Title invalid <p>"
         titlecheck.style.color = "red"
         titleField.appendChild(titlecheck)
         console.log(titlecheck)
     }
-    if( zipcheck = false){
+    if( zipcheck = 0){
         zipcheck= "<p> Zip invalid <p>"
         zipcheck.style.color = "red"
         zip.appendChild(zipcheck)
         console.log(zipcheck)
     }
-    if (cvvcheck = false){
+    if (cvvcheck = 0){
         cvvcheck= "<p> CVV invalid <p>"
         cvvcheck.style.color = "red"
         cvv.appendChild(cvvcheck)
         console.log(cvvcheck)
     }
-    if (credit = false){
+    if (credit = 0){
         creditcheck= "<p> Credit Card number invalid <p>"
         creditcheck.style.color = "red"
         credit.appendChild(creditcheck)
         console.log(creditcheck)
     }
-    else{
-        allgood
+    if(allgood = 5){
+        
         
     }
 })

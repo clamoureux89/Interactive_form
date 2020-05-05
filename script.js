@@ -221,19 +221,21 @@ $('#payment').change(function(){
     if(payfield.val() === "credit card"){
         selectcredit.show()
         selectpaypal.hide()
-        selectbitcoin.hide()
+        selectbitcoin.hide()    
         console.log("Show credit card")
     }
     if(payfield.val() === "paypal"){
         selectcredit.hide()
         selectpaypal.show()
-        selectbitcoin.hide() 
+        selectbitcoin.hide()
+        creditcheck = 1 
         console.log("Show paypal")
     }
     if(payfield.val() === "bitcoin"){
         selectcredit.hide()
         selectpaypal.hide()
         selectbitcoin.show()
+        creditcheck = 1
         console.log("Show bitcoin")
     }
 }) 
@@ -283,43 +285,44 @@ $("submit").prop("disabled", true)
 
 $("submit").on("hover", ()=> {if(namecheck,mailcheck,titlecheck,zipcheck,cvvcheck,credit){
     $("submit").prop("disabled",false)}
+    allgood = 5
 })
 
 document.getElementsByName("submit").addEventListener("click",()=>{
     if (namecheck = 0){
-        namecheck= "<p> Name invalid <p>"
-        namecheck.style.color = "red"
-        nameField.appendChild(namecheck)
-        console.log(namecheck)
+        namewarning= "<p> Name invalid <p>"
+        namewarning.style.color = "red"
+        nameField.appendChild(namewarning)
+        console.log(namewarning)
     }
     if(mailcheck = 0){
-        mailcheck= "<p> Email invalid <p>"
-        mailcheck.style.color = "red"
-        mailField.appendChild(mailcheck)
-        console.log(mailcheck)
+        mailwarning= "<p> Email invalid <p>"
+        mailwarning.style.color = "red"
+        mailField.appendChild(mailwarning)
+        console.log(mailwarning)
     }
     if (titlecheck = 0){
-        titlecheck= "<p> Title invalid <p>"
-        titlecheck.style.color = "red"
-        titleField.appendChild(titlecheck)
-        console.log(titlecheck)
+        titlewarning= "<p> Title invalid <p>"
+        titlewarning.style.color = "red"
+        titleField.appendChild(titlewarning)
+        console.log(titlewarning)
     }
     if( zipcheck = 0){
-        zipcheck= "<p> Zip invalid <p>"
-        zipcheck.style.color = "red"
-        zip.appendChild(zipcheck)
+        zipwarning= "<p> Zip invalid <p>"
+        zipwarning.style.color = "red"
+        zip.appendChild(zipwarning)
         console.log(zipcheck)
     }
     if (cvvcheck = 0){
-        cvvcheck= "<p> CVV invalid <p>"
-        cvvcheck.style.color = "red"
-        cvv.appendChild(cvvcheck)
+        cvvwarning= "<p> CVV invalid <p>"
+        cvvwarning.style.color = "red"
+        cvv.appendChild(cvvwarning)
         console.log(cvvcheck)
     }
-    if (credit = 0){
-        creditcheck= "<p> Credit Card number invalid <p>"
-        creditcheck.style.color = "red"
-        credit.appendChild(creditcheck)
+    if (creditcheck = 0){
+        creditwarning= "<p> Credit Card number invalid <p>"
+        creditwarning.style.color = "red"
+        credit.appendChild(creditwarning)
         console.log(creditcheck)
     }
     if(allgood = 5){

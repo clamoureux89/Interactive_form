@@ -287,46 +287,50 @@ $("submit").on("hover", ()=> {if(namecheck,mailcheck,titlecheck,zipcheck,cvvchec
     $("submit").prop("disabled",false)}
     allgood = 5
 })
-
-document.getElementsByName("submit").addEventListener("click",()=>{
-    if (namecheck = 0){
-        namewarning= "<p> Name invalid <p>"
-        namewarning.style.color = "red"
-        nameField.appendChild(namewarning)
-        console.log(namewarning)
-    }
-    if(mailcheck = 0){
-        mailwarning= "<p> Email invalid <p>"
-        mailwarning.style.color = "red"
-        mailField.appendChild(mailwarning)
-        console.log(mailwarning)
-    }
-    if (titlecheck = 0){
-        titlewarning= "<p> Title invalid <p>"
-        titlewarning.style.color = "red"
-        titleField.appendChild(titlewarning)
-        console.log(titlewarning)
-    }
-    if( zipcheck = 0){
-        zipwarning= "<p> Zip invalid <p>"
-        zipwarning.style.color = "red"
-        zip.appendChild(zipwarning)
-        console.log(zipcheck)
-    }
-    if (cvvcheck = 0){
-        cvvwarning= "<p> CVV invalid <p>"
-        cvvwarning.style.color = "red"
-        cvv.appendChild(cvvwarning)
-        console.log(cvvcheck)
-    }
-    if (creditcheck = 0){
-        creditwarning= "<p> Credit Card number invalid <p>"
-        creditwarning.style.color = "red"
-        credit.appendChild(creditwarning)
-        console.log(creditcheck)
-    }
-    if(allgood = 5){
-        
-        
-    }
-})
+$(document).ready(function() {
+    $(':input[type="submit"]').prop('disabled', true);
+    $('input[type="text"]').keyup(function() {
+        if($(this).val() != '') {
+            if (namecheck = 0){
+            namewarning= "<p> Name invalid <p>"
+            namewarning.style.color = "red"
+            nameField.appendChild(namewarning)
+            console.log(namewarning)
+            
+            }
+            if(mailcheck = 0){
+                mailwarning= "<p> Email invalid <p>"
+                mailwarning.style.color = "red"
+                mailField.appendChild(mailwarning)
+                console.log(mailwarning)
+            }
+            if (titlecheck = 0){
+                titlewarning= "<p> Title invalid <p>"
+                titlewarning.style.color = "red"
+                titleField.appendChild(titlewarning)
+                console.log(titlewarning)
+            }
+            if( zipcheck = 0){
+                zipwarning= "<p> Zip invalid <p>"
+                zipwarning.style.color = "red"
+                zip.appendChild(zipwarning)
+                console.log(zipcheck)
+            }
+            if (cvvcheck = 0){
+                cvvwarning= "<p> CVV invalid <p>"
+                cvvwarning.style.color = "red"
+                cvv.appendChild(cvvwarning)
+                console.log(cvvcheck)
+            }
+            if (creditcheck = 0){
+                creditwarning= "<p> Credit Card number invalid <p>"
+                creditwarning.style.color = "red"
+                credit.appendChild(creditwarning)
+                console.log(creditcheck)
+            }
+        }
+        else{
+          $(':input[type="submit"]').prop('disabled', false);
+       }
+    });
+});

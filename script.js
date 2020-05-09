@@ -15,7 +15,7 @@ let titlecheck = 0
 let zipcheck = 0
 let cvvcheck = 0
 let creditcheck = 0
-let allgood = namecheck + mailcheck + zipcheck + cvvcheck + creditcheck
+let allgood = namecheck + mailcheck + zipcheck + cvvcheck + creditcheck + titlecheck
 
 ///Upon loading focus on the first input field so user can start typing
 nameField.focus()
@@ -228,14 +228,14 @@ $('#payment').change(function(){
         selectcredit.hide()
         selectpaypal.show()
         selectbitcoin.hide()
-        creditcheck = 1 
+        creditcheck = 3 
         console.log("Show paypal")
     }
     if(payfield.val() === "bitcoin"){
         selectcredit.hide()
         selectpaypal.hide()
         selectbitcoin.show()
-        creditcheck = 1
+        creditcheck = 3
         console.log("Show bitcoin")
     }
 }) 
@@ -310,23 +310,23 @@ $(document).ready(function() {
                 titleField.appendChild(titlewarning)
                 console.log(titlewarning)
             }
-            if( zipcheck = 0){
-                zipwarning= "<p> Zip invalid <p>"
-                zipwarning.style.color = "red"
-                zip.appendChild(zipwarning)
-                console.log(zipcheck)
             }
-            if (cvvcheck = 0){
-                cvvwarning= "<p> CVV invalid <p>"
-                cvvwarning.style.color = "red"
-                cvv.appendChild(cvvwarning)
-                console.log(cvvcheck)
-            }
-            if (creditcheck = 0){
+            if (creditcheck < 3){
                 creditwarning= "<p> Credit Card number invalid <p>"
                 creditwarning.style.color = "red"
                 credit.appendChild(creditwarning)
                 console.log(creditcheck)
+                if( zipcheck = 0){
+                    zipwarning= "<p> Zip invalid <p>"
+                    zipwarning.style.color = "red"
+                    zip.appendChild(zipwarning)
+                    console.log(zipcheck)
+                }
+                if (cvvcheck = 0){
+                    cvvwarning= "<p> CVV invalid <p>"
+                    cvvwarning.style.color = "red"
+                    cvv.appendChild(cvvwarning)
+                    console.log(cvvcheck)
             }
         }
         else{

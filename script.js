@@ -29,10 +29,11 @@ nameField.addEventListener("focusout",()=>{
     if (valid) {
         nameField.style.backgroundColor = "lightgreen";
         namecheck = 1
-        
+        console.log("namecheck = " + namecheck)
       }else{
         nameField.style.backgroundColor = "red";
         namecheck = 0
+        console.log("namecheck = " + namecheck)
       }
     console.log(nameField.value +"checked")
 })
@@ -223,6 +224,7 @@ $('#payment').change(function(){
         selectpaypal.hide()
         selectbitcoin.hide()    
         console.log("Show credit card")
+        console.log("creditcheck =" + creditcheck)
     }
     if(payfield.val() === "paypal"){
         selectcredit.hide()
@@ -230,6 +232,7 @@ $('#payment').change(function(){
         selectbitcoin.hide()
         creditcheck = 3 
         console.log("Show paypal")
+        console.log("creditcheck =" + creditcheck)
     }
     if(payfield.val() === "bitcoin"){
         selectcredit.hide()
@@ -237,6 +240,7 @@ $('#payment').change(function(){
         selectbitcoin.show()
         creditcheck = 3
         console.log("Show bitcoin")
+        console.log("creditcheck =" + creditcheck)
     }
 }) 
 
@@ -247,9 +251,11 @@ creditcard.addEventListener("focusout", ()=>{
     if (valid) {
     creditcard.style.backgroundColor = "lightgreen";
     creditcheck = 1
+    console.log("creditcheck =" + creditcheck)
   }else{
       creditcard.style.backgroundColor = "red"
       creditcheck = 0
+      console.log("creditcheck =" + creditcheck)
   }
     console.log(creditcard.value +"checked")
 })
@@ -260,11 +266,14 @@ cvv.addEventListener("focusout", ()=>{
     if (valid) {
     cvv.style.backgroundColor = "lightgreen";
     cvvcheck = 1
+    console.log("creditcheck =" + creditcheck)
   }else{
       cvv.style.backgroundColor = "red"
       cvvcheck = 0
+      console.log("creditcheck =" + creditcheck)
   }
     console.log(cvv.value +"checked")
+    console.log("creditcheck =" + creditcheck)
 })
 
 
@@ -274,63 +283,65 @@ zip.addEventListener("focusout", ()=>{
     if (valid) {
     zip.style.backgroundColor = "lightgreen";
     zipcheck = 1
+    console.log("creditcheck =" + creditcheck)
   }else{
       zip.style.backgroundColor = "red"
       zipcheck = 0
+      console.log("creditcheck =" + creditcheck)
   }
     console.log(zip.value +"checked")
+    console.log("creditcheck =" + creditcheck)
 })
 
-$("submit").prop("disabled", true)
-
-$("submit").on("hover", ()=> {if(namecheck,mailcheck,titlecheck,zipcheck,cvvcheck,credit){
-    $("submit").prop("disabled",false)}
-    allgood = 5
-})
 $(document).ready(function() {
     $(':input[type="submit"]').prop('disabled', true);
-    $('input[type="text"]').keyup(function() {
-        if($(this).val() != '') {
-            if (namecheck = 0){
-            namewarning= "<p> Name invalid <p>"
-            namewarning.style.color = "red"
-            nameField.appendChild(namewarning)
-            console.log(namewarning)
-            
-            }
-            if(mailcheck = 0){
-                mailwarning= "<p> Email invalid <p>"
-                mailwarning.style.color = "red"
-                mailField.appendChild(mailwarning)
-                console.log(mailwarning)
-            }
-            if (titlecheck = 0){
-                titlewarning= "<p> Title invalid <p>"
-                titlewarning.style.color = "red"
-                titleField.appendChild(titlewarning)
-                console.log(titlewarning)
-            }
-            }
-            if (creditcheck < 3){
-                creditwarning= "<p> Credit Card number invalid <p>"
-                creditwarning.style.color = "red"
-                credit.appendChild(creditwarning)
-                console.log(creditcheck)
-                if( zipcheck = 0){
-                    zipwarning= "<p> Zip invalid <p>"
-                    zipwarning.style.color = "red"
-                    zip.appendChild(zipwarning)
-                    console.log(zipcheck)
+})
+$("submit").on("hover", ()=> {
+    if(namecheck,mailcheck,titlecheck,zipcheck,cvvcheck,creditcheck){
+        $(':input[type="submit"]').prop('disabled', false);}
+    else{
+        $('input[type="text"]').keyup(function() {
+            if($(this).val() != '') {
+                if (namecheck = 0){
+                namewarning= "<p> Name invalid <p>"
+                namewarning.style.color = "red"
+                nameField.appendChild(namewarning)
+                console.log(namewarning)
                 }
-                if (cvvcheck = 0){
-                    cvvwarning= "<p> CVV invalid <p>"
-                    cvvwarning.style.color = "red"
-                    cvv.appendChild(cvvwarning)
-                    console.log(cvvcheck)
+                if(mailcheck = 0){
+                    mailwarning= "<p> Email invalid <p>"
+                    mailwarning.style.color = "red"
+                    mailField.appendChild(mailwarning)
+                    console.log(mailwarning)
+                }
+                if (titlecheck = 0){
+                    titlewarning= "<p> Title invalid <p>"
+                    titlewarning.style.color = "red"
+                    titleField.appendChild(titlewarning)
+                    console.log(titlewarning)
+                }
+                
+                if (creditcheck < 3){
+                    creditwarning= "<p> Credit Card number invalid <p>"
+                    creditwarning.style.color = "red"
+                    credit.appendChild(creditwarning)
+                    console.log(creditcheck)
+                    if( zipcheck = 0){
+                        zipwarning= "<p> Zip invalid <p>"
+                        zipwarning.style.color = "red"
+                        zip.appendChild(zipwarning)
+                        console.log(zipcheck)
+                    }
+                    if (cvvcheck = 0){
+                        cvvwarning= "<p> CVV invalid <p>"
+                        cvvwarning.style.color = "red"
+                        cvv.appendChild(cvvwarning)
+                        console.log(cvvcheck)
+                    }    
+                }
             }
-        }
-        else{
-          $(':input[type="submit"]').prop('disabled', false);
-       }
-    });
-});
+            
+        })
+        
+    };
+})

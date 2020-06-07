@@ -296,10 +296,12 @@ zip.addEventListener("focusout", ()=>{
 $(document).ready(function() {
     $(':input[type="submit"]').prop('disabled', true);
 })
-$("submit").on("hover", ()=> {
+$("submit").on("click", (event)=> {
     if(namecheck,mailcheck,titlecheck,zipcheck,cvvcheck,creditcheck){
         $(':input[type="submit"]').prop('disabled', false);}
     else{
+        event.preventDefault()
+        console.log("Submit prevented")
         $('input[type="text"]').keyup(function() {
             if($(this).val() != '') {
                 if (namecheck = 0){

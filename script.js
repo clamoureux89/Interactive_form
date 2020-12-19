@@ -16,7 +16,12 @@ let zipcheck = 0
 let cvvcheck = 0
 let creditcheck = 0
 let allgood = namecheck + mailcheck + zipcheck + cvvcheck + creditcheck + titlecheck
-
+namecheck = false
+mailcheck = false
+zipcheck = false
+cvvcheck = false
+creditcheck = false
+titlecheck = false
 ///Upon loading focus on the first input field so user can start typing
 nameField.focus()
 
@@ -30,6 +35,7 @@ nameField.addEventListener("focusout",()=>{
         nameField.style.backgroundColor = "lightgreen";
         namecheck = 1
         console.log("namecheck = " + namecheck)
+        namecheck = true
       }else{
         nameField.style.backgroundColor = "red";
         namecheck = 0
@@ -64,7 +70,7 @@ titleField.addEventListener("change", ()=>{
     document.getElementById("job_role_other").hidden = 1
     if(field === "other"){
         document.getElementById("job_role_other").hidden = false
-    }    
+    }   
     }
 )
 
@@ -116,6 +122,7 @@ $("#design").change(function() {
     }else{
         colorField.hide()
     }
+    if (colorField.value != "choose a color"){colorcheck = true}
 });
 
 let showcost = document.createElement('p')
